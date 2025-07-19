@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ornate Fantasy Buttons</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #ffd700;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .button-section {
+            text-align: center;
+        }
+        
+        .button-section h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .button-container {
+            margin-bottom: 1rem;
+        }
+        
+        /* Ornate Button Styles */
+        .ornate-button {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            overflow: hidden;
+            border: none;
+            font-size: 16px;
+            min-width: 160px;
+            height: 50px;
+            padding: 12px 24px;
+        }
+        
+        .ornate-button:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        
+        .ornate-button:active {
+            transform: scale(0.98);
+        }
+        
+        .ornate-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .ornate-button:disabled:hover {
+            transform: none;
+            filter: none;
+        }
+        
+        /* Variants */
+        .teal {
+            background: linear-gradient(145deg, #0d7377 0%, #14a085 50%, #0d7377 100%);
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .purple {
+            background: linear-gradient(145deg, #4a154b 0%, #8b5cf6 50%, #4a154b 100%);
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .gold {
+            background: linear-gradient(145deg, #b8860b 0%, #ffd700 50%, #b8860b 100%);
+            border: 3px solid #8b4513;
+            box-shadow: 0 0 20px rgba(139, 69, 19, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .silver {
+            background: linear-gradient(145deg, #708090 0%, #c0c0c0 50%, #708090 100%);
+            border: 3px solid #4682b4;
+            box-shadow: 0 0 20px rgba(70, 130, 180, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Sizes */
+        .small {
+            font-size: 14px;
+            min-width: 120px;
+            height: 40px;
+            padding: 8px 16px;
+        }
+        
+        .large {
+            font-size: 18px;
+            min-width: 200px;
+            height: 60px;
+            padding: 16px 32px;
+        }
+        
+        /* Decorative elements */
+        .decorative-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .corner-ornament {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.8));
+        }
+        
+        .top-left {
+            top: -1px;
+            left: -1px;
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+        }
+        
+        .top-right {
+            top: -1px;
+            right: -1px;
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+        }
+        
+        .bottom-left {
+            bottom: -1px;
+            left: -1px;
+            clip-path: polygon(0 0, 0 100%, 100% 100%);
+            background: linear-gradient(-45deg, #ffd700, #ffed4e);
+        }
+        
+        .bottom-right {
+            bottom: -1px;
+            right: -1px;
+            clip-path: polygon(100% 0, 0 100%, 100% 100%);
+            background: linear-gradient(-135deg, #ffd700, #ffed4e);
+        }
+        
+        .center-ornament {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            border-radius: 50%;
+            border: 2px solid #8b4513;
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.9));
+        }
+        
+        .glow-overlay {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            height: 30%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            border-radius: 50%;
+            filter: blur(8px);
+            pointer-events: none;
+        }
+        
+        .button-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .features-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 2px solid #ffd700;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features-section h3 {
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .features-section ul {
+            color: #ffffff;
+            line-height: 1.8;
+            list-style: none;
+        }
+        
+        .features-section li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ornate Fantasy Buttons</h1>
+        
+        <div class="button-grid">
+            <!-- Original buttons from the image -->
+            <div class="button-section">
+                <h3>Original Buttons</h3>
+                
+                <div class="button-container">
+                    <button class="ornate-button teal" onclick="handleClick('Watch Ad: Boost Aura')">
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">
+                            Watch Ad:<br/>
+                            Boost Aura
+                        </span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+                
+                <div class="button-container">
+                    <button class="ornate-button purple" onclick="handleClick('Watch Ad: Get Dew Drops')">
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">
+                            Watch Ad:<br/>
+                            Get Dew Drops
+                        </span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Gold variants -->
+            <div class="button-section">
+                <h3>Gold Variants</h3>
+                
+                <div class="button-container">
+                    <button class="ornate-button gold" onclick="handleClick('Golden Power')">
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">
+                            Golden<br/>
+                            Power
+                        </span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+                
+                <div class="button-container">
+                    <button class="ornate-button gold large" onclick="handleClick('Legendary Reward')">
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">
+                            Legendary<br/>
+                            Reward
+                        </span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Silver variants -->
+            <div class="button-section">
+                <h3>Silver Variants</h3>
+                
+                <div class="button-container">
+                    <button class="ornate-button silver small" onclick="handleClick('Silver Shield')">
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">
+                            Silver<br/>
+                            Shield
+                        </span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+                
+                <div class="button-container">
+                    <button class="ornate-button silver" onclick="handleClick('Mystic Armor')">
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">
+                            Mystic<br/>
+                            Armor
+                        </span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Gaming themed -->
+            <div class="button-section">
+                <h3>Gaming Themed</h3>
+                
+                <div class="button-container">
+                    <button class="ornate-button teal" onclick="handleClick('Start Quest')">
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">
+                            Start<br/>
+                            Quest
+                        </span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+                
+                <div class="button-container">
+                    <button class="ornate-button purple" onclick="handleClick('Cast Spell')">
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">
+                            Cast<br/>
+                            Spell
+                        </span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Disabled state -->
+            <div class="button-section">
+                <h3>Disabled State</h3>
+                
+                <div class="button-container">
+                    <button class="ornate-button teal" disabled>
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">
+                            Disabled<br/>
+                            Button
+                        </span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+                
+                <div class="button-container">
+                    <button class="ornate-button purple" disabled>
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">
+                            Coming<br/>
+                            Soon
+                        </span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Size variants -->
+            <div class="button-section">
+                <h3>Size Variants</h3>
+                
+                <div class="button-container">
+                    <button class="ornate-button teal small" onclick="handleClick('Small Button')">
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">Small</span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+                
+                <div class="button-container">
+                    <button class="ornate-button purple" onclick="handleClick('Medium Button')">
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">Medium</span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+                
+                <div class="button-container">
+                    <button class="ornate-button gold large" onclick="handleClick('Large Button')">
+                        <div class="decorative-overlay">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                            <div class="center-ornament"></div>
+                        </div>
+                        <span class="button-content">Large</span>
+                        <div class="glow-overlay"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features-section">
+            <h3>Features</h3>
+            <ul>
+                <li>🎨 <strong>4 Variants:</strong> Teal, Purple, Gold, and Silver themes</li>
+                <li>📏 <strong>3 Sizes:</strong> Small, Medium, and Large options</li>
+                <li>✨ <strong>Ornate Design:</strong> Golden corner decorations and center ornament</li>
+                <li>🎮 <strong>Interactive:</strong> Hover, click, and disabled states</li>
+                <li>🌟 <strong>Glowing Effects:</strong> Subtle lighting and shadow effects</li>
+                <li>🎭 <strong>Fantasy Theme:</strong> Medieval/RPG game aesthetic</li>
+                <li>📱 <strong>Responsive:</strong> Works on all screen sizes</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        function handleClick(action) {
+            console.log(action + ' clicked!');
+            alert(action + ' clicked!');
+        }
+    </script>
+</body>
+</html>
