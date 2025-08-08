@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">NEAT Game Bot</string>
-    <string name="accessibility_service_description">Game Bot Accessibility Service for automated game interactions</string>
-    <string name="overlay_permission_title">Overlay Permission Required</string>
-    <string name="overlay_permission_message">The app needs permission to display overlay controls over other apps.</string>
-    <string name="accessibility_permission_title">Accessibility Service Required</string>
-    <string name="accessibility_permission_message">The app needs accessibility service permission to perform automated touches.</string>
-</resources>
